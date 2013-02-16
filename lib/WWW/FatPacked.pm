@@ -1,4 +1,5 @@
 package WWW::FatPacked;
+# ABSTRACT: http://fatpacked.pl
 use strictures 1;
 use File::ShareDir qw[ dist_dir ];
 use File::Spec;

@@ -7,7 +7,7 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
     NAME          => 'WWW::FatPacked',
     AUTHOR        => "Samuel Kaufman  <skaufman\@cpan.org>",
-    ABSTRACT_FROM => 'lib/WWW/FatPacked.pod',
+    ABSTRACT_FROM => 'lib/WWW/FatPacked.pm',
     VERSION_FROM  => 'lib/WWW/FatPacked.pm',
     LICENSE       => "perl",
     EXE_FILES     => [ "script/fatpacked.pl", "script/start.fatpacked.pl" ],
