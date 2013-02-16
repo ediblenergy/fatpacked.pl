@@ -1,4 +1,6 @@
 Controller::Root:
+    github_repository_url: https://github.com/ediblenergy/fatpacked.pl
+    site_name: fatpacked.pl
     application_dispatch:
         cpanminus:
             doc_url: https://metacpan.org/module/App::cpanminus

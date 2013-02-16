@@ -7,6 +7,8 @@ use aliased 'WWW::FatPacked::AppMetaData';
 
 my $class = __PACKAGE__;
 
+has site_name => ( is => 'ro', required => 1 );
+
 has application_dispatch => (
     is       => 'ro',
     required => 1,
@@ -47,13 +49,23 @@ around [qw/root doc/] => sub {
     my $self = shift;
     my ($ctx) = @_;
 
-    my ($subdomain) = split( /\./ => $ctx->req->uri->host );   #$subdomain.x.y.z
+    my ($subdomain) =
+      split( $self->site_name, $ctx->req->uri->host );    #$subdomain.x.y.z
+    return $self->github_homepage($ctx) unless $subdomain; #fatpacked.pl
+    $subdomain =~ s/\.$//g;
+    return $self->github_homepage($ctx) if $subdomain =~ /www/i; #www.fatpacked.pl
 
     my $app = $self->subdomain_app->{lc($subdomain)}
       or return $self->error_404($ctx);
 
     return $self->$orig(@_,$app);
 };
+
+sub github_homepage {
+    my ( $self, $c ) = @_;
+    return $c->res->redirect(
+        $self->github_repository_url . "/tree/" . $self->VERSION );
+}
 
 sub root {
     my ( $self, $ctx, $app ) = @_;
