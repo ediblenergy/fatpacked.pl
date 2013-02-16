@@ -9,8 +9,8 @@ Daemon::Control->new({
     lsb_stop    => '$syslog',
     lsb_sdesc   => 'fatpacked.pl',
     lsb_desc    => 'fatpacked.pl controls the fatpacked.pl site',
-    path        => "$FindBin::Bin/init_script.pl",
     init_config => "/opt/fatpacked.pl/perl_env",
+    path        => "/opt/fatpacked.pl/perl5/bin/start.fatpacked.pl",
     program     => '/opt/fatpacked.pl/perl5/bin/fatpacked.pl',
     program_args => [ '--port', '3001'],
  
