@@ -27,7 +27,6 @@ $class->config(
 
 sub _build_application_dispatch_idx {
     my $dispatch = shift->application_dispatch;
-    warn Dumper $dispatch;
     return +{
         map {
             my $source_url = $dispatch->{$_}{source_url} or die "no source url";

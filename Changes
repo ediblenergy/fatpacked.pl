@@ -1,1 +1,2 @@
+- add Plack::Runner to script/fatpacked.pl
 - Added ack and cpanminus
