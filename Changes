@@ -1,6 +1,6 @@
-Feb 16 2013
+- redirect www.fatpacked.pl or fatpacked.pl to the github
 
-v0.5
+0.5 - 2013-02-16
 - /doc redirects
 - error handling 
 - tinyrepl, jsonpretty ( mst ) 
