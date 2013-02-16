@@ -1,10 +1,11 @@
 package WWW::FatPacked::Controller::Root;
+use strictures 1;
 use Moose;
 extends 'Catalyst::Controller';
 use MooseX::Types::Moose qw[ HashRef ];
 use aliased 'WWW::FatPacked::AppMetaData';
+
 my $class = __PACKAGE__;
-use Data::Dumper::Concise;
 
 has application_dispatch => (
     is       => 'ro',
@@ -51,10 +52,14 @@ sub root {
 }
 
 sub error_404 {
-    die 404;
+    my($self,$c) = @_;
+    $c->response->code(404);
+    $c->response->body("404 Not Found");
 }
 sub error_500 {
-    die 500;
+    my($self,$c) = @_;
+    $c->response->code(500);
+    $c->response->body("500 Internal Server Error");
 }
 
 $class->meta->make_immutable;
