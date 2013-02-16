@@ -2,13 +2,15 @@ package WWW::FatPacked::Controller::Root;
 use Moose;
 extends 'Catalyst::Controller';
 use MooseX::Types::Moose qw[ HashRef ];
+use aliased 'WWW::FatPacked::AppMetaData';
 my $class = __PACKAGE__;
 use Data::Dumper::Concise;
 
 has application_dispatch => (
-    is => 'ro',
+    is       => 'ro',
     required => 1,
-    isa => HashRef
+    isa      => HashRef,
+    trigger  => sub { shift->application_dispatch_idx },    #construct ASAP
 );
 
 has application_dispatch_idx => ( 
@@ -29,7 +31,8 @@ sub _build_application_dispatch_idx {
     my $dispatch = shift->application_dispatch;
     return +{
         map {
-            my $source_url = $dispatch->{$_}{source_url} or die "no source url";
+            my $app = AppMetaData->new( name => $_, %{ $dispatch->{$_} } ); #validate
+            my $source_url = $app->source_url;
             map { $_ => $source_url } @{ $dispatch->{$_}{subdomains_to_resolve} }
         } keys %$dispatch
     };
