@@ -8,13 +8,11 @@ Controller::Root:
                 - cpanm
                 - cpan-minus
                 - cpan_minus
-                - App::cpanminus
         ack:
             doc_url: https://metacpan.org/module/ack
             source_url:  http://betterthangrep.com/ack-standalone
             subdomains_to_resolve:
                 - ack
-                - App::Ack
         pgbadger:
             doc_url: http://dalibo.github.com/pgbadger/
             source_url: https://raw.github.com/dalibo/pgbadger/master/pgbadger

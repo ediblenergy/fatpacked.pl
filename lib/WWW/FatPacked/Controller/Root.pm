@@ -37,7 +37,7 @@ sub _build_subdomain_app {
     return +{
         map {
             my $app = AppMetaData->new( canonical_name => $_, %{ $dispatch->{$_} } ); #validate
-            map { $_ => $app } @{ $app->subdomains_to_resolve }
+            map { lc($_) => $app } @{ $app->subdomains_to_resolve }
         } keys %$dispatch
     };
 }
@@ -49,7 +49,7 @@ around [qw/root doc/] => sub {
 
     my ($subdomain) = split( /\./ => $ctx->req->uri->host );   #$subdomain.x.y.z
 
-    my $app = $self->subdomain_app->{$subdomain}
+    my $app = $self->subdomain_app->{lc($subdomain)}
       or return $self->error_404($ctx);
 
     return $self->$orig(@_,$app);
