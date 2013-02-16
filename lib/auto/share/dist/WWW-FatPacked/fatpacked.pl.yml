@@ -6,6 +6,8 @@ Controller::Root:
             subdomains_to_resolve:
                 - cpanminus
                 - cpanm
+                - cpan-minus
+                - cpan_minus
                 - App::cpanminus
         ack:
             doc_url: https://metacpan.org/module/ack
@@ -18,3 +20,16 @@ Controller::Root:
             source_url: https://raw.github.com/dalibo/pgbadger/master/pgbadger
             subdomains_to_resolve:
                 - pgbadger
+                - pg_badger
+                - pg-badger
+        tinyrepl:
+            source_url: http://sherlock.scsys.co.uk/~matthewt/tinyrepl
+            subdomains_to_resolve:
+                - tinyrepl
+                - tiny_repl
+        jsonpretty:
+            doc_url: http://metacpan.org/module/MSTROUT/jsonpretty-1/script/jsonpretty
+            source_url: http://api.metacpan.org/source/MSTROUT/jsonpretty-1/script/jsonpretty
+            subdomains_to_resolve:
+                - jsonpretty
+                - json_pretty
