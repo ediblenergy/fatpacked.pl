@@ -1,0 +1,15 @@
+Controller::Root:
+    application_dispatch:
+        cpanminus:
+            doc_url: https://metacpan.org/module/App::cpanminus
+            source_url: http://cpanmin.us
+            subdomains_to_resolve:
+                - cpanminus
+                - cpanm
+                - App::cpanminus
+        ack:
+            doc_url: https://metacpan.org/module/ack
+            source_url:  http://betterthangrep.com/ack-standalone
+            subdomains_to_resolve:
+                - ack
+                - App::Ack

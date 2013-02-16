@@ -1,8 +1,14 @@
 package WWW::FatPacked;
+use strictures 1;
+use File::ShareDir qw[ dist_dir ];
+use File::Spec;
+use YAML;
 
 our $VERSION = '0.000001'; # 0.0.1
 
 $VERSION = eval $VERSION;
+
+my $dist_dir = dist_dir("WWW-FatPacked");
 
 use Moose;
 extends 'Catalyst';
@@ -12,9 +18,10 @@ use YAML;
 my $class = __PACKAGE__;
 
 
-$class->config( 
-    YAML::LoadFile( $class->path_to('fatpacked.pl.yml')
-);
+
+$class->config(
+    YAML::LoadFile(
+        File::Spec->catfile( $dist_dir, 'fatpacked.pl.yml' ) ) );
 
 $class->setup;
 
