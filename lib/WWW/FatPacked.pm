@@ -1,5 +1,4 @@
 package WWW::FatPacked;
-# ABSTRACT: http://fatpacked.pl
 use strictures 1;
 use File::ShareDir qw[ dist_dir ];
 use File::Spec;
@@ -29,3 +28,9 @@ $class->setup;
 $class->meta->make_immutable;
 
 1;
+
+=head1 NAME
+
+WWW::FatPacked - http://fatpacked.pl
+
+=cut 
