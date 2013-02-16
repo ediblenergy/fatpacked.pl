@@ -6,6 +6,12 @@ use MooseX::Types::Moose qw[ ArrayRef Str ];
 
 my $class = __PACKAGE__;
 
+has canonical_name => (
+    is       => 'ro',
+    required => 1,
+    isa      => Str,
+);
+
 has source_url => (
     is       => 'ro',
     required => 1,

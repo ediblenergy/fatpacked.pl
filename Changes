@@ -1,7 +1,10 @@
+- /doc redirects
+- error handling 
+
 Feb 16, 2013
 
 v0.5
- - tinyrepl,jsonpretty ( mst ) 
+- tinyrepl, jsonpretty ( mst ) 
 
 v0.2
 - added pgbadger
