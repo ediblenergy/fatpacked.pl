@@ -1,6 +1,11 @@
 package WWW::FatPacked::AppMetaData;
 
 use strictures 1;
+
+our $VERSION = '0.5';
+
+$VERSION = eval $VERSION;
+
 use Moose;
 use MooseX::Types::Moose qw[ ArrayRef Str ];
 

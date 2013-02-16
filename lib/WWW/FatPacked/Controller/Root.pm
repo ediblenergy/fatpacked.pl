@@ -1,13 +1,19 @@
 package WWW::FatPacked::Controller::Root;
 use strictures 1;
+
+our $VERSION = '0.5';
+
+$VERSION = eval $VERSION;
+
 use Moose;
 extends 'Catalyst::Controller';
-use MooseX::Types::Moose qw[ HashRef ];
+use MooseX::Types::Moose qw[ HashRef Str];
 use aliased 'WWW::FatPacked::AppMetaData';
 
 my $class = __PACKAGE__;
 
-has site_name => ( is => 'ro', required => 1 );
+has [qw/site_name github_repository_url/] => ( is => 'ro', required => 1, isa => Str );
+
 
 has application_dispatch => (
     is       => 'ro',
