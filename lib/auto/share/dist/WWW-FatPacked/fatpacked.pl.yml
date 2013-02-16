@@ -13,3 +13,8 @@ Controller::Root:
             subdomains_to_resolve:
                 - ack
                 - App::Ack
+        pgbadger:
+            doc_url: http://dalibo.github.com/pgbadger/
+            source_url: https://raw.github.com/dalibo/pgbadger/master/pgbadger
+            subdomains_to_resolve:
+                - pgbadger
