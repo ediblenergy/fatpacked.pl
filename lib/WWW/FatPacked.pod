@@ -12,6 +12,8 @@ http://ack.fatpacked.pl => redirect to standalone version of ack
 
 http://cpanminus.fatpacked.pl => redirect to standalone version of cpanminus
 
+See L<http://fatpacked.pl/list> for current list.
+
 =head1 DESCRIPTION
 
 =head1 AUTHOR
