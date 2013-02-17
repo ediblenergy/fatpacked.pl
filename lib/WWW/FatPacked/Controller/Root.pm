@@ -1,7 +1,7 @@
 package WWW::FatPacked::Controller::Root;
 use strictures 1;
 
-our $VERSION = '0.61';
+our $VERSION = '0.62';
 
 $VERSION = eval $VERSION;
 

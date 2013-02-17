@@ -12,7 +12,7 @@
 - error handling 
 - tinyrepl, jsonpretty ( mst ) 
 
-v0.2
+0.2
 - added pgbadger
 - add Plack::Runner to script/fatpacked.pl
 - Added ack and cpanminus
