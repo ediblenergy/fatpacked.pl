@@ -1,7 +1,7 @@
 package WWW::FatPacked::Controller::Root;
 use strictures 1;
 
-our $VERSION = '0.6';
+our $VERSION = '0.61';
 
 $VERSION = eval $VERSION;
 
@@ -70,7 +70,7 @@ around [qw/root doc/] => sub {
 sub github_homepage {
     my ( $self, $c ) = @_;
     return $c->res->redirect(
-        $self->github_repository_url . "/tree/" . $self->VERSION );
+        $self->github_repository_url . "/tree/v" . $self->VERSION );
 }
 
 sub root {
