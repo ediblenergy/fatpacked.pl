@@ -4,7 +4,7 @@ use File::ShareDir qw[ dist_dir ];
 use File::Spec;
 use YAML;
 
-our $VERSION = '0.62';
+our $VERSION = '0.621';
 
 $VERSION = eval $VERSION;
 
