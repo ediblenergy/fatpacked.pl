@@ -1,6 +1,8 @@
+review-changes:
+	git log --reverse $( git tag | tail -1 )..HEAD | vim -o - -c 'new Changes' 
 README.md:
 	pod2markdown lib/WWW/FatPacked.pod > README.md
-skaufman-release: preflight
+skaufman-release: preflight README.md
 	$(MAKE) disttest
 	rm -rf $(DISTVNAME)
 	$(MAKE) $(DISTVNAME).tar$(SUFFIX)

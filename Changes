@@ -1,3 +1,6 @@
+- resolve http://fatpacked.pl/list|yml
+- added perlbrew
+
 0.61 - 2013-02-17
 - fix redirect to tag
 
