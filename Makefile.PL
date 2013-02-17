@@ -6,6 +6,7 @@ unless ( -f 'META.yml' ) {
     manifest_include( 'script'   => '.pl' );
     manifest_include( 'lib/auto' => qr{[^.].*} );
     manifest_include( ''         => 'README.md' );
+    manifest_include( ''         => 'WWW-FatPacked.version' );
 }
 
 
