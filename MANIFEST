@@ -12,3 +12,4 @@ script/fatpacked.pl
 script/start.fatpacked.pl
 t/compile.t
 t/test_404s.t
+WWW-FatPacked.version
