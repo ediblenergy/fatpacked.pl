@@ -1,10 +1,12 @@
 use strict;
 use warnings FATAL => 'all';
 use ExtUtils::MakeMaker;
+unless( -f 'META.yml' ) {
+    do 'maint/Makefile.PL.include' or die $@;
+    manifest_include('script' => '.pl');
+    manifest_include( 'lib/auto' => qr{[^.].*} );
+}
 
-(do 'maint/Makefile.PL.include' or die $@) unless -f 'META.yml';
-
-manifest_include('script' => '.pl');
 
 WriteMakefile(
     NAME          => 'WWW::FatPacked',

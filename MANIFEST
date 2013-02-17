@@ -1,4 +1,5 @@
 Changes
+lib/auto/share/dist/WWW-FatPacked/fatpacked.pl.yml
 lib/WWW/FatPacked.pm
 lib/WWW/FatPacked/AppMetaData.pm
 lib/WWW/FatPacked/Controller/Root.pm
