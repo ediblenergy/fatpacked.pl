@@ -1,8 +1,10 @@
 review-changes:
-	git log --reverse $( git tag | tail -1 )..HEAD | vim -o - -c 'new Changes' 
+	git log --reverse $$( git tag | tail -1 )..HEAD | vim -o - -c 'new Changes' 
+bump-version:
+	perl-reversion lib/ -set $$( head -1 WWW-FatPacked.version )
 README.md:
 	pod2markdown lib/WWW/FatPacked.pod > README.md
-skaufman-release: preflight README.md
+skaufman-release: bump-version preflight README.md
 	$(MAKE) disttest
 	rm -rf $(DISTVNAME)
 	$(MAKE) $(DISTVNAME).tar$(SUFFIX)
