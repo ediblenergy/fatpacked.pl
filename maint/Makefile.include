@@ -4,12 +4,10 @@ bump-version:
 	perl-reversion lib/ -set $$( head -1 WWW-FatPacked.version )
 README.md:
 	pod2markdown lib/WWW/FatPacked.pod > README.md
-skaufman-release: bump-version preflight README.md
+fatpacked.pl.release: bump-version preflight README.md
 	$(MAKE) disttest
 	rm -rf $(DISTVNAME)
 	$(MAKE) $(DISTVNAME).tar$(SUFFIX)
 	cp $(DISTVNAME).tar$(SUFFIX) /tmp/
 	git commit -a -m "Release commit for $(VERSION)"
 	git tag v$(VERSION) -m "release v$(VERSION)"
-	git push --tags
-	git push
