@@ -1,10 +1,11 @@
 use strict;
 use warnings FATAL => 'all';
 use ExtUtils::MakeMaker;
-unless( -f 'META.yml' ) {
+unless ( -f 'META.yml' ) {
     do 'maint/Makefile.PL.include' or die $@;
-    manifest_include('script' => '.pl');
+    manifest_include( 'script'   => '.pl' );
     manifest_include( 'lib/auto' => qr{[^.].*} );
+    manifest_include( ''         => 'README.md' );
 }
 
 
