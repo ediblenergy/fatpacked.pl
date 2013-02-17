@@ -8,7 +8,8 @@ $VERSION = eval $VERSION;
 use Moose;
 use YAML;
 extends 'Catalyst::Controller';
-use MooseX::Types::Moose qw[ HashRef Str];
+use MooseX::Types::Moose qw[ HashRef Str ArrayRef ];
+use MooseX::AttributeShortcuts;
 use aliased 'WWW::FatPacked::AppMetaData';
 
 my $class = __PACKAGE__;
@@ -23,37 +24,44 @@ has application_dispatch => (
     trigger  => sub { shift->subdomain_app },    #construct ASAP
 );
 
+has apps => (
+    is => 'lazy',
+    isa => ArrayRef,
+);
+
 has subdomain_app => ( 
     is => 'ro',
     lazy_build => 1,
 );
 
-$class->config(
-    namespace => '',
-    action => {
-        root => {
-            Path => '/',
-            Args => 0
-        },
-        doc => {
-            Path => '/doc',
-            Args => 0
-        },
-        list => {
-            LocalRegex => 'list|yml',
-            Args => 0
-        },
-    }
-);
-
-sub _build_subdomain_app {
+sub _build_apps {
     my $dispatch = shift->application_dispatch;
+    return [
+        map {
+            AppMetaData->new( canonical_name => $_, %{ $dispatch->{$_} } )
+        } keys %$dispatch
+    ];
+}
+sub _build_subdomain_app {
+    my $self = shift;
+    my $apps = $self->apps;
     return +{
         map {
-            my $app = AppMetaData->new( canonical_name => $_, %{ $dispatch->{$_} } ); #validate
-            map { lc($_) => $app } @{ $app->subdomains_to_resolve }
-        } keys %$dispatch
+            my $app = $_;
+            (
+                map { lc($_) => $app }
+                  @{ $app->subdomains_to_resolve } )
+        } @$apps
     };
+}
+
+sub default_redirect {
+    my($self,$ctx) = @_;
+    my $redirect = $ctx->uri_for('/list');
+    warn $redirect;
+    $ctx->res->redirect($redirect);
+    $ctx->detach;
+    return;
 }
 
 around [qw/root doc/] => sub {
@@ -63,9 +71,9 @@ around [qw/root doc/] => sub {
 
     my ($subdomain) =
       split( $self->site_name, $ctx->req->uri->host );    #$subdomain.x.y.z
-    return $self->github_homepage($ctx) unless $subdomain; #fatpacked.pl
+    return $self->default_redirect($ctx) unless $subdomain; #fatpacked.pl
     $subdomain =~ s/\.$//g;
-    return $self->github_homepage($ctx) if $subdomain =~ /www/i; #www.fatpacked.pl
+    return $self->default_redirect($ctx) if $subdomain =~ /www/i; #www.fatpacked.pl
 
     my $app = $self->subdomain_app->{lc($subdomain)}
       or return $self->error_404($ctx);
@@ -91,8 +99,14 @@ sub doc {
 }
 
 sub list {
-    my($self,$ctx) = @_;
-    $ctx->res->body( YAML::Dump( $self->application_dispatch ) );
+    my ( $self, $ctx ) = @_;
+    my $res = [
+        map {
+            my $app_redirect =
+              "http://${\ $_->canonical_name }.${\ $self->site_name }";
+            ( $app_redirect, ( $_->doc_url ? "$app_redirect/doc" : () ) )
+        } @{ $self->apps } ];
+    $ctx->res->body( YAML::Dump($res) );
     $ctx->response->headers->{ContentType} = "text/plain";
     $ctx->response->status(200);
 }

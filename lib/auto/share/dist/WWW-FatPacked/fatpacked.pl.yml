@@ -38,3 +38,14 @@ Controller::Root:
             doc_url: http://perlbrew.pl
             subdomains_to_resolve:
                 - perlbrew
+    namespace: ""
+    action: 
+        root:
+            Path: "/"
+            Args: 0
+        doc:
+            Local: 1
+            Args: 0
+        list:
+            LocalRegex: 'list|yml'
+            Args: 0

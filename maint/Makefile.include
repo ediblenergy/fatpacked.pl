@@ -4,7 +4,9 @@ bump-version:
 	perl-reversion lib/ -set $$( head -1 WWW-FatPacked.version )
 README.md:
 	pod2markdown lib/WWW/FatPacked.pod > README.md
-fatpacked.pl.release: bump-version preflight README.md
+fatpacked.pl.release: bump-version preflight
+	rm -r README.md
+	$(MAKE) README.md
 	$(MAKE) disttest
 	rm -rf $(DISTVNAME)
 	$(MAKE) $(DISTVNAME).tar$(SUFFIX)
