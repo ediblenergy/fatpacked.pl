@@ -4,7 +4,7 @@ WWW::FatPacked - http://fatpacked.pl
 
 =head1 VERSION
 
-0.621
+0.622
 
 =head1 SYNOPSIS
 

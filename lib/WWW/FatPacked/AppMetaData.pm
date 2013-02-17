@@ -2,7 +2,7 @@ package WWW::FatPacked::AppMetaData;
 
 use strictures 1;
 
-our $VERSION = '0.621';
+our $VERSION = '0.622';
 
 $VERSION = eval $VERSION;
 

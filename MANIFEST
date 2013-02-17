@@ -1,4 +1,6 @@
 Changes
+lib/auto/share/dist/WWW-FatPacked/error_doc/404.html
+lib/auto/share/dist/WWW-FatPacked/error_doc/500.html
 lib/auto/share/dist/WWW-FatPacked/fatpacked.pl.yml
 lib/WWW/FatPacked.pm
 lib/WWW/FatPacked/AppMetaData.pm
