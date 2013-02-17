@@ -2,6 +2,7 @@ review-changes:
 	git log --reverse $$( git tag | tail -1 )..HEAD | vim -o - -c 'new Changes' 
 bump-version:
 	perl-reversion lib/ -set $$( head -1 WWW-FatPacked.version )
+	perl Makefile.PL
 README.md:
 	pod2markdown lib/WWW/FatPacked.pod > README.md
 fatpacked.pl.release: bump-version preflight
