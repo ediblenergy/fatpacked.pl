@@ -4,3 +4,8 @@ MYMETA.yml
 Makefile
 WWW-FatPacked-*
 Distar/
+MANIFEST.SKIP
+MANIFEST.bak
+MYMETA.json
+MYMETA.yml
+Makefile.old
