@@ -33,3 +33,8 @@ Controller::Root:
             subdomains_to_resolve:
                 - jsonpretty
                 - json_pretty
+        perlbrew:
+            source_url: http://get.perlbrew.pl
+            doc_url: http://perlbrew.pl
+            subdomains_to_resolve:
+                - perlbrew
