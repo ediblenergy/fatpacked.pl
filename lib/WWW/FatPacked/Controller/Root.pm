@@ -6,6 +6,7 @@ our $VERSION = '0.61';
 $VERSION = eval $VERSION;
 
 use Moose;
+use YAML;
 extends 'Catalyst::Controller';
 use MooseX::Types::Moose qw[ HashRef Str];
 use aliased 'WWW::FatPacked::AppMetaData';
@@ -28,6 +29,7 @@ has subdomain_app => (
 );
 
 $class->config(
+    namespace => '',
     action => {
         root => {
             Path => '/',
@@ -36,7 +38,11 @@ $class->config(
         doc => {
             Path => '/doc',
             Args => 0
-        }
+        },
+        list => {
+            LocalRegex => 'list|yml',
+            Args => 0
+        },
     }
 );
 
@@ -82,6 +88,13 @@ sub doc {
     my($self,$ctx,$app) = @_;
     return $self->error_404($ctx) unless $app->doc_url;
     return $ctx->res->redirect( $app->doc_url );
+}
+
+sub list {
+    my($self,$ctx) = @_;
+    $ctx->res->body( YAML::Dump( $self->application_dispatch ) );
+    $ctx->response->headers->{ContentType} = "text/plain";
+    $ctx->response->status(200);
 }
 
 sub error_404 {
