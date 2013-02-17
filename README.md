@@ -1,2 +1,1 @@
-
-[docs](lib/WWW/Fatpacked.pod)
+[WWW::FatPacked](lib/WWW/FatPacked.pod)
