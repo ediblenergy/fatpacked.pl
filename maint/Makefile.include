@@ -1,0 +1,11 @@
+README.md:
+	pod2markdown lib/WWW/FatPacked.pod > README.md
+skaufman-release: preflight
+	$(MAKE) disttest
+	rm -rf $(DISTVNAME)
+	$(MAKE) $(DISTVNAME).tar$(SUFFIX)
+	cp $(DISTVNAME).tar$(SUFFIX) /tmp/
+	git commit -a -m "Release commit for $(VERSION)"
+	git tag v$(VERSION) -m "release v$(VERSION)"
+	git push --tags
+	git push
