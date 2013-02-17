@@ -4,13 +4,15 @@ use ExtUtils::MakeMaker;
 
 (do 'maint/Makefile.PL.include' or die $@) unless -f 'META.yml';
 
+manifest_include('script' => '.pl');
+
 WriteMakefile(
     NAME          => 'WWW::FatPacked',
     AUTHOR        => "Samuel Kaufman  <skaufman\@cpan.org>",
     ABSTRACT_FROM  => 'lib/WWW/FatPacked.pm',
     VERSION_FROM  => 'lib/WWW/FatPacked.pm',
     LICENSE       => "perl",
-    EXE_FILES     => [ "script/fatpacked.pl", "script/start.fatpacked.pl" ],
+    EXE_FILES => [ "script/fatpacked.pl", "script/start.fatpacked.pl" ],
     PREREQ_PM     => {
         "Catalyst::Runtime"     => "5.90019",
         "Data::Dumper::Concise" => 0,
