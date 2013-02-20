@@ -38,14 +38,9 @@ Controller::Root:
             doc_url: http://perlbrew.pl
             subdomains_to_resolve:
                 - perlbrew
-    namespace: ""
-    action: 
-        root:
-            Path: "/"
-            Args: 0
-        doc:
-            Local: 1
-            Args: 0
-        list:
-            LocalRegex: 'list|yml'
-            Args: 0
+        crontab2english:
+            source_url: http://www.cpan.org/authors/id/S/SB/SBURKE/crontab2english_0.71.pl
+            doc_url: http://interglacial.com/~sburke/pub/crontab2english.html
+            subdomains_to_resolve:
+                - crontab2english
+                - crontoenglish

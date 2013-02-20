@@ -55,6 +55,22 @@ sub _build_subdomain_app {
     };
 }
 
+$class->config(
+    namespace => "",
+    action    => {
+        root => {
+            Path => "/",
+            Args => 0,
+        },
+        doc => {
+            Local => 1,
+            Args  => 0,
+        },
+        list => {
+            LocalRegex => 'list|yml',
+            Args       => 0,
+        },
+    } );
 sub default_redirect {
     my($self,$ctx) = @_;
     my $redirect = $ctx->uri_for('/list');
