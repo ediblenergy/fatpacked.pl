@@ -4,13 +4,15 @@ WWW::FatPacked - http://fatpacked.pl
 
 # VERSION
 
-0.622
+0.63
 
 # SYNOPSIS
 
-http://ack.fatpacked.pl => redirect to standalone version of ack
+curl -L ack.fatpacked.pl > ack
 
-http://cpanminus.fatpacked.pl => redirect to standalone version of cpanminus
+curl -L cpanminus.fatpacked.pl | perl - -L ~/perl5 App::cpanminus local::lib
+
+
 
 See [http://fatpacked.pl/list](http://fatpacked.pl/list) for current list.
 
